@@ -1,0 +1,23 @@
+git init - cria um repositório git
+
+git add - adiciona as modificações feitas para commit
+
+git log - mostra todos os commits feitos na branch atual.
+"--oneline --all"(identifica os commits com a primeira linha de
+cada, menos verboso)
+
+git checkout "branch" - Troca da branch atual para a
+especificada
+
+git branch --all - Lista todas as branches remotas criadas no
+repositório
+
+git gc - Retira todos os commits onde não há apontamentos para
+eles
+
+git reset "branch" - desvincula uma branch em específico e
+posiciona todos os seus commits para "esperar deleção"
+
+git "cmd" TAB - Lista os comandos disponíveis para este cmd
+
+git remote - mostra os repositórios remotos disponíveis(caso tenha algum)
