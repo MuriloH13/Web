@@ -1,8 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- Comentário em html-->
+        <!-- Comentário em html
+        Kauã Reis Rodrigues 
+        -->
         <title>Meu primeiro html</title>
+
+        <style>
+            h1{
+                color: red;
+            }
+            img{
+                width: 300px;
+                border-radius: 50%;
+            }
+            p{
+                color: blue;
+            }
+            h2{
+                background-color: ghostwhite;
+            }
+            strong{
+                color: black;
+            }
+            table, td, th{
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+        </style>
+
         <h1>Título de nível 1</h1>
         <h2>Título de nível 2 <br>
             <img src alt="Imagem 2">
@@ -12,10 +38,16 @@
         <h5>Título de nível 5</h5>
         <h6>Título de nível 6</h6>
         <img src alt="nenhuma imagem encontrada">
+        <hr>
         <p>Parágrafo para o título 1</p>
         <span>Um pouco de texto.</span>
         <span><b>Continuação</b> do <strong>texto</strong> e mais texto de
             novo</span>
+        <h1>Listas</h1>
+        <p>o html possui listas não ordenadas e listas ordenadas, as listas
+            ordenadas não ordenadas são definidas pela tag &lt;ul&gt; enquanto
+            usamos &lt;ol&gt; para listas ordenadas e &lt;dl&gt; para listas
+            definidas</p>
         <ul>
             <li>git init - cria um repositório git</li>
             <li>git add - adiciona as modificações feitas para commit</li>
@@ -34,6 +66,76 @@
             <li>git remote - mostra os repositórios remotos disponíveis(caso
                 tenha algum)</li>
         </ul>
+        <ol start="5" type>
+            <li>Panqueca</li>
+            <li>Pera</li>
+            <li>Uva</li>
+            <li>Maçã</li>
+        </ol>
+        <dl>
+            <dt>Café</dt>
+            <dd>Bebida fundamental</dd>
+            <dt>Água</dt>
+            <dd>Segunda bebida fundamental</dd>
+
+            <h1>Tags de formatação de texto</h1>
+            <p>Lorem <strong>ipsum</strong> dolor, 10<sub>2</sub> =
+                2<sub>10</sub> <sup>amet</sup> consectetur adipisicing elit.
+                Libero
+                expedita consequuntur id iusto consequatur, sed deserunt
+                corporis. Dolor alias distinctio et vitae odio voluptatibus
+                suscipit omnis? Ad unde facere fugit.</p>
+        </dl>
+
+        <h1>Links e imagens</h1>
+
+        <a href="https://google.com/search" target="_blank">google</a>
+        <br>
+        <br>
+
+        <a href="https://google.com" target="_blank">Lorem, ipsum dolor sit amet
+            consectetur adipisicing elit. Eveniet, cupiditate? Veritatis in
+            libero aperiam dolore odit quisquam ipsam tenetur quod labore
+            asperiores quibusdam, quas harum vitae vero quasi ut? Sapiente.</a>
+            <br>
+            <br>
+
+        <img src="/imgs/ranger-extraterrestre-branco.webp" alt= "Não deu pra achar">
+
+        <h1>Tabelas em html</h1>
+        <br>
+        <br>
+
+        <table>
+            <tr>
+                <th>Coluna 1</th>
+                <th>Coluna 2</th>
+                <th>Coluna 3</th>
+                <th>Coluna 4</th>
+                <th>Coluna 5</th>
+            </tr>
+            <tr>
+                <td>Coisas</td>
+                <td>Coisas</td>
+                <td>Coisas</td>
+                <td>Coisas</td>
+                <td>Coisas</td>
+            </tr>
+        </table>
+        <br>
+
+        <form action="https://google.com/search" target="_blank">
+
+            <label for="q">Procurar</label>
+            <input type="text" name="q" id="q">
+            <input type="submit" value="butão">
+        </form>
+
+        <h1>Kauã Reis Rodrigues</h1>
+        <h1>Lucas</h1>
+        <h1>Boeing</h1>
+        <h1>Boeing</h1>
+
     </head>
     <body>
 
