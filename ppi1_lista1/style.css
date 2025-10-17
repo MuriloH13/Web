@@ -1,0 +1,21 @@
+* {
+    background-color: bisque;
+    align-content: center;
+    text-align: center;
+    margin: 10px;
+}
+
+#titulo {
+    text-decoration: black;
+    font-size: xx-large;
+    max-width: max-content;
+    margin: 0 auto;
+}
+#container {
+    width: 750px;
+    margin: 0 auto;
+}
+
+li {
+    text-align: start;
+}
