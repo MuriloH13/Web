@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.circle {
+    flex-grow: 1;
+    border-radius: 50%;
+    border-left: black 20px solid;
+    border-top: purple 20px solid;
+    border-right: black 20px solid;
+    border-bottom: purple 20px solid;
+    background-color: rgb(146, 2, 2);
+    height: 100px;
+    width: 100px;
+    animation: rotacao 3s linear infinite;
+}
+
+@keyframes rotacao {
+    from {
+        transform: translate(0, 0) rotate(0deg);
+    } to {
+        transform: translate(0%, 0%) rotate(360deg);
+    }
+}

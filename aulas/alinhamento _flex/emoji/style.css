@@ -1,0 +1,12 @@
+#foguete {
+    font-size: 100px;
+    animation: subir 5s ease-in-out infinite;
+}
+@keyframes subir {
+    0% {
+        transform: translate(100vh);
+
+    } to {
+        transform: translate(0vh);
+    }
+}
