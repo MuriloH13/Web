@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+</head>
+<body>
+    <div>
+        <label for="peso">Peso</label>
+    <input id="peso" type="text">
+    <br>
+    <label for="altura">Altura</label>
+    <input id="altura" type="text">
+    <button>Calcular imc</button>
+    </div>
+    <div id="resultado"></div>
+
+    <script>
+        b=document.querySelector("button")
+            let inputPeso = document.querySelector("#peso")
+            let intpuAltura = document.querySelector("#altura")
+
+            b.addEventListener("click", () => {
+                let peso = Number.parseFloat(inputPeso.value)
+                let altura = Number.parseFloat(intpuAltura.value)
+
+                imc = peso / (altura * altura)
+                console.log(imc)
+                let resultado=document.getElementById("resultado")
+                resultado.innerHTML=`<p> Imc = ${imc} </p>`
+            })
+    </script>
+</body>
+</html>

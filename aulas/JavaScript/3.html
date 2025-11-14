@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+</head>
+<body>
+    
+
+    <script>
+        let i = 0
+        b=document.createElement("button")
+        b.innerHTML="Clique em mim"
+        document.body.appendChild(b)
+        p=document.createElement("p")
+        p.id="texto"
+
+        b.addEventListener("click", () => {
+            document.body.appendChild(p)
+            i++
+            p.innerHTML=i
+        } )
+    </script>
+</body>
+</html>
