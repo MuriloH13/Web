@@ -8,9 +8,19 @@ body {
 
 .calculatorBody {
     display: grid;
+    grid-auto-flow: row;
+
+    padding-top: 2%;
+    justify-content: center;
     width: 500px;
     height: 500px;
     border: 2px solid black;
+}
+
+.screen {
+    width: 400px;
+    height: 60px;
+    border: 2px solid;
 }
 
 .signal {
