@@ -109,11 +109,10 @@
         let contador = 1;
 
         function formatar(ms) {
-            let total = Math.floor(ms / 1000);
-            let h = String(Math.floor(total / 3600)).padStart(2, "0");
-            let m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
-            let s = String(total % 60).padStart(2, "0");
-            return `${h}:${m}:${s}`;
+            let min = String(Math.floor(ms / 60000)).padStart(2, "0");
+            let seg = String(Math.floor((ms % 60000) / 1000)).padStart(2, "0");
+            let mil = String(Math.floor((ms % 1000) / 10)).padStart(2, "0");
+            return `${min}:${seg}:${mil}`;
         }
 
         function atualizarTela() {
@@ -125,7 +124,7 @@
         function iniciar() {
             if (intervalo !== null) return;
             startTime = Date.now();
-            intervalo = setInterval(atualizarTela, 100);
+            intervalo = setInterval(atualizarTela, 10);
         }
 
         function pausar() {
