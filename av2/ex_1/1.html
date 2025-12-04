@@ -1,23 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercício 1</title>
+    <title>Calculadora</title>
+    <style>
+        body {
+            height: 100vh;
+            font-family: Arial;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    <link rel="stylesheet" href="1.css">
+        .calc {
+            width: 200px;
+            background: #f8f8f8;
+            padding: 15px;
+            border: solid black 1px;
+        }
+
+        #display {
+            width: 100%;
+            height: 40px;
+            background: #fff;
+            text-align: right;
+            font-size: 22px;
+            padding: 5px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .btns {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+
+        button {
+            height: 35px;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #e0e0e0;
+        }
+
+        button.operator {
+            background: #d0d0d0;
+        }
+
+        .equal {
+            background: #4da3ff;
+            color: white;
+            grid-row: span 4;
+            grid-column: 4;
+            height: 158px;
+        }
+    </style>
 </head>
+
 <body>
 
-    <div class="calculatorBody">
+    <div class="calc">
+        <div id="display">0</div>
 
-        <div class="screen"></div>
-        <div class="signal"></div>
-        <div class="signal"></div>
-        <div class="signal"></div>
-        <div class="signal"></div>
+        <div class="btns">
+            <button class="operator" onclick="addOp('+')">+</button>
+            <button class="operator" onclick="addOp('-')">-</button>
+            <button class="operator" onclick="addOp('*')">*</button>
+            <button class="operator" onclick="addOp('/')">/</button>
 
+            <button onclick="addNum('7')">7</button>
+            <button onclick="addNum('8')">8</button>
+            <button onclick="addNum('9')">9</button>
+            <button class="equal" onclick="calcular()">=</button>
+
+            <button onclick="addNum('4')">4</button>
+            <button onclick="addNum('5')">5</button>
+            <button onclick="addNum('6')">6</button>
+
+            <button onclick="addNum('1')">1</button>
+            <button onclick="addNum('2')">2</button>
+            <button onclick="addNum('3')">3</button>
+
+            <button onclick="addNum('0')">0</button>
+            <button onclick="addNum('.')">.</button>
+            <button onclick="apagar()">C</button>
+
+        </div>
     </div>
-    
+
+    <script>
+        let display = document.getElementById("display");
+
+        function validar(expr) {
+            return /^[0-9+\-*/.() ]+$/.test(expr);
+        }
+
+        function addNum(n) {
+            if (display.textContent == "0") display.textContent = n;
+            else display.textContent += n;
+        }
+
+        function addOp(op) {
+            display.textContent += " " + op + " ";
+        }
+
+        function apagar() {
+            display.textContent = "0";
+        }
+
+        function backspace() {
+            let txt = display.textContent.trim();
+            txt = txt.slice(0, -1);
+            display.textContent = txt === "" ? "0" : txt;
+        }
+
+        function calcular() {
+            let expressao = display.textContent;
+
+            if (!validar(expressao)) {
+                alert("Expressão inválida!");
+                return;
+            }
+
+            try {
+                let resultado = eval(expressao);
+                display.textContent = resultado;
+            } catch {
+                alert("Erro ao calcular!");
+            }
+        }
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Backspace") {
+                e.preventDefault();
+                backspace();
+            }
+        });
+    </script>
+
 </body>
+
 </html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cronômetro</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #e8e8e8;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .container {
+            display: flex;
+            width: 600px;
+            height: 260px;
+        }
+
+        .left {
+            width: 60%;
+            background: #555;
+            color: white;
+            padding: 25px;
+        }
+
+        .time {
+            font-size: 48px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+        }
+
+
+        .buttons button {
+            padding: 10px 10px;
+            margin-right: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #iniciar {
+            background: green;
+            color: white;
+        }
+
+        #pausar {
+            background: orange;
+            color: white;
+        }
+
+        #zerar {
+            background: lightcoral;
+            color: white;
+        }
+
+        .right {
+            width: 40%;
+            background: #d4d4d4;
+            padding: 15px;
+        }
+
+        .right h3 {
+            text-align: center;
+        }
+
+        #lista {
+            column-count: 2;
+            margin-top: 15px;
+            font-size: 14px;
+            line-height: 20px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="left">
+            <div class="time" id="display">00:00:00</div>
+
+            <div class="buttons">
+                <button id="iniciar" onclick="iniciar()">Iniciar (I)</button>
+                <button id="pausar" onclick="pausar()">Pausar (P)</button>
+                <button id="zerar" onclick="zerar()">Zerar (Z)</button>
+            </div>
+        </div>
+
+        <div class="right">
+            <h3>Paradas</h3>
+            <div id="lista"></div>
+        </div>
+
+    </div>
+
+    <script>
+        let intervalo = null;
+        let startTime = null;     // quando iniciou
+        let acumulado = 0;        // tempo acumulado em ms
+        let contador = 1;
+
+        // FORMATAR 00:00:00
+        function formatar(ms) {
+            let total = Math.floor(ms / 1000);
+            let h = String(Math.floor(total / 3600)).padStart(2, "0");
+            let m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
+            let s = String(total % 60).padStart(2, "0");
+            return `${h}:${m}:${s}`;
+        }
+
+        // ATUALIZA O DISPLAY
+        function atualizarTela() {
+            let agora = Date.now();
+            let ms = acumulado + (agora - startTime);
+            document.getElementById("display").textContent = formatar(ms);
+        }
+
+        // INICIAR
+        function iniciar() {
+            if (intervalo !== null) return; // já está rodando
+            startTime = Date.now();
+            intervalo = setInterval(atualizarTela, 100);
+        }
+
+        // PAUSAR
+        function pausar() {
+            if (intervalo === null) return;
+
+            clearInterval(intervalo);
+            intervalo = null;
+
+            let agora = Date.now();
+            acumulado += (agora - startTime);
+
+            // Registrar pausa
+            let tempoAtual = formatar(acumulado);
+            document.getElementById("lista").innerHTML +=
+                `${contador}. ${tempoAtual}<br>`;
+            contador++;
+        }
+
+        // ZERAR
+        function zerar() {
+            clearInterval(intervalo);
+            intervalo = null;
+            acumulado = 0;
+            contador = 1;
+            document.getElementById("display").textContent = "00:00:00";
+            document.getElementById("lista").innerHTML = "";
+        }
+
+        // ATALHOS DE TECLADO
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "i" || e.key === "I") iniciar();
+            if (e.key === "p" || e.key === "P") pausar();
+            if (e.key === "z" || e.key === "Z") zerar();
+        });
+    </script>
+
+</body>
+
+</html>

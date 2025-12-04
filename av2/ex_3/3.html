@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Bloco de Notas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #listaNotas {
+            width: 35%;
+            border-right: 2px solid #ddd;
+            padding-right: 20px;
+        }
+
+        #listaNotas div {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        #listaNotas div:hover {
+            background: #f0f0f0;
+        }
+
+        #editor {
+            width: 40%;
+        }
+
+        #titulo, #conteudo {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #conteudo {
+            height: 250px;
+            resize: none;
+        }
+
+        button {
+            padding: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .danger {
+            background: rgb(219, 67, 67);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div id="listaNotas"></div>
+
+<div id="editor">
+    <input type="text" id="titulo" placeholder="Título da nota">
+    <textarea id="conteudo" placeholder="Conteúdo da nota"></textarea>
+
+    <br>
+
+    <button onclick="salvarNota()">Salvar</button>
+    <button class="danger" onclick="excluirNota()">Excluir</button>
+    <button onclick="novaNota()">Nova Nota</button>
+</div>
+
+<script src="3.js"></script>
+</body>
+</html>
