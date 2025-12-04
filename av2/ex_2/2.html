@@ -104,11 +104,10 @@
 
     <script>
         let intervalo = null;
-        let startTime = null;     // quando iniciou
-        let acumulado = 0;        // tempo acumulado em ms
+        let startTime = null;
+        let acumulado = 0;
         let contador = 1;
 
-        // FORMATAR 00:00:00
         function formatar(ms) {
             let total = Math.floor(ms / 1000);
             let h = String(Math.floor(total / 3600)).padStart(2, "0");
@@ -117,21 +116,18 @@
             return `${h}:${m}:${s}`;
         }
 
-        // ATUALIZA O DISPLAY
         function atualizarTela() {
             let agora = Date.now();
             let ms = acumulado + (agora - startTime);
             document.getElementById("display").textContent = formatar(ms);
         }
 
-        // INICIAR
         function iniciar() {
-            if (intervalo !== null) return; // já está rodando
+            if (intervalo !== null) return;
             startTime = Date.now();
             intervalo = setInterval(atualizarTela, 100);
         }
 
-        // PAUSAR
         function pausar() {
             if (intervalo === null) return;
 
@@ -141,14 +137,12 @@
             let agora = Date.now();
             acumulado += (agora - startTime);
 
-            // Registrar pausa
             let tempoAtual = formatar(acumulado);
             document.getElementById("lista").innerHTML +=
                 `${contador}. ${tempoAtual}<br>`;
             contador++;
         }
 
-        // ZERAR
         function zerar() {
             clearInterval(intervalo);
             intervalo = null;
@@ -158,7 +152,6 @@
             document.getElementById("lista").innerHTML = "";
         }
 
-        // ATALHOS DE TECLADO
         document.addEventListener("keydown", function (e) {
             if (e.key === "i" || e.key === "I") iniciar();
             if (e.key === "p" || e.key === "P") pausar();

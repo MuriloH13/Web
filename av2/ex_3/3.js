@@ -9,13 +9,11 @@ class Nota {
 let notas = [];
 let notaAtual = null;
 
-// ------------------- CARREGAR AO INICIAR -------------------
 window.onload = () => {
     carregarNotas();
     listarNotas();
 };
 
-// ------------------- LOCAL STORAGE -------------------
 function carregarNotas() {
     const dados = localStorage.getItem("notas");
     notas = dados ? JSON.parse(dados) : [];
@@ -25,7 +23,6 @@ function salvarStorage() {
     localStorage.setItem("notas", JSON.stringify(notas));
 }
 
-// ------------------- CRUD -------------------
 function listarNotas() {
     const lista = document.getElementById("listaNotas");
     lista.innerHTML = "";
@@ -53,11 +50,11 @@ function salvarNota() {
     const conteudo = document.getElementById("conteudo").value;
 
     if (!notaAtual) {
-        // Criar nova nota
+        
         const nova = new Nota(Date.now(), titulo, conteudo);
         notas.push(nova);
     } else {
-        // Editar nota existente
+        
         notaAtual.titulo = titulo;
         notaAtual.conteudo = conteudo;
     }
